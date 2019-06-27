@@ -1,11 +1,37 @@
 <script>
-	export let name;
+	import { onMount } from 'svelte';
+
+	let canvas;
+
+	onMount(() => {
+		const ctx = canvas.getContext('2d');
+		
+		ctx.beginPath();
+		ctx.rect(20, 40, 50, 50);
+		ctx.fillStyle = "#FF0000";
+		ctx.fill();
+		ctx.closePath();
+
+		ctx.beginPath();
+		ctx.arc(240, 160, 20, 0, Math.PI*2, false);
+		ctx.fillStyle = "green";
+		ctx.fill();
+		ctx.closePath();
+
+		ctx.beginPath();
+		ctx.rect(160, 10, 100, 40);
+		ctx.strokeStyle = "rgba(0, 0, 255, 0.5)";
+		ctx.stroke();
+		ctx.closePath();
+	});
 </script>
 
-<style>
-	h1 {
-		color: purple;
-	}
-</style>
+<canvas
+	bind:this={canvas}
+	width={480}
+	height={320}
+></canvas>
 
-<h1>Hello {name}!</h1>
+<style>
+	canvas { background: #eee; }
+</style>
