@@ -4,6 +4,9 @@
 	let canvas;
 	var rightPressed = false;
 	var leftPressed = false;
+	var paddleHeight = 10;
+	var paddleWidth = 75;
+	var paddleX = 0;
 
 	onMount(() => {
 		const ctx = canvas.getContext('2d');
@@ -12,9 +15,6 @@
 		var y = canvas.height-30;
 		var dx = 2;
 		var dy = -2;
-		var paddleHeight = 10;
-		var paddleWidth = 75;
-		var paddleX = (canvas.width-paddleWidth)/2;
 		var brickRowCount = 3;
 		var brickColumnCount = 5;
 		var brickWidth = 75;
@@ -24,6 +24,7 @@
 		var brickOffsetLeft = 30;
 		var bricks = [];
 		var score = 0;
+		paddleX = (canvas.width-paddleWidth)/2;
 
 		for(var c=0; c<brickColumnCount; c++) {
 			bricks[c] = [];
@@ -146,10 +147,17 @@
 		else if(e.keyCode == 37) {
 			leftPressed = false;
 		}
+	}
+
+	function mouseMoveHandler(e) {
+		var relativeX = e.clientX - canvas.offsetLeft;
+		if(relativeX > 0 && relativeX < canvas.width) {
+			paddleX = relativeX - paddleWidth/2;
+		} 
 	}	
 </script>
 
-<svelte:window on:keydown={keyDownHandler} on:keyup={keyUpHandler}/>
+<svelte:window on:keydown={keyDownHandler} on:keyup={keyUpHandler} on:mousemove={mouseMoveHandler}/>
 
 <canvas
 	bind:this={canvas}
