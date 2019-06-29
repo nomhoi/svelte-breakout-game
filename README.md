@@ -6,7 +6,7 @@ Breakout game, powered by Svelte. Build for [this tutorial](https://habr.com/ru/
 To install and play the game locally:
 ```bash
 git clone git@github.com:nomhoi/svelte-breakout-game.git
-cd tic-tac-toe
+cd svelte-breakout-game
 npm install
 npm run dev
 ```
