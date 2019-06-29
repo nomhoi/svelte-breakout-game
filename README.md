@@ -1,6 +1,6 @@
 # MDN Breakout Game
 
-Breakout game, powered by Svelte. Build for [this tutorial](https://habr.com/ru/post/458142/).
+Breakout game, powered by [Svelte](https://github.com/sveltejs/svelte). Build for [this tutorial](https://habr.com/ru/post/458142/).
 
 ## Get started
 To install and play the game locally:
